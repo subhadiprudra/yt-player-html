@@ -15,7 +15,6 @@
             player = new YT.Player('player', {
                 height: '100',
                 width: '200',
-                videoId: 'hNQFjqDvPhA',
                  "playerVars": {
                     "rel": 0,
                     "showinfo": 0,
@@ -34,6 +33,9 @@
                     'onStateChange': onPlayerStateChange
                 }
             });
+        }
+        function play(videoId){
+             player.loadVideoById(videoId, 0);
         }
         function onPlayerReady(event) {
             event.target.playVideo();
