@@ -28,10 +28,12 @@
   <script>
     // Initialize Plyr for the YouTube embed
     const player = new Plyr('#player', {
-        controls: ['play', 'progress', 'volume', 'fullscreen', 'pip'],
+       controls: ['play', 'progress', 'volume', 'fullscreen', 'pip'],
     });
     player.on('ready', () => {
-      player.play();
+      setTimeout(() => {
+        player.play();
+      }, 2000); // 2000 milliseconds = 2 seconds
     });
     
   </script>
