@@ -1,51 +1,40 @@
-<!-- assets/test.html -->
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Test</title>
-    <script src="https://www.youtube.com/iframe_api"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plyr YouTube Video Player Example</title>
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
 </head>
 <body>
-    <div id="player"></div>
-    <script>
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '100',
-                width: '200',
-                videoId: 'pJ817m2yJAQ',
-                 playerVars: {
-                    rel: 0,
-                    showinfo: 0,
-                    autoplay: 1,
-                    fs: 0,
-                    disablekb: 1,
-                    modestbranding: 1,
-                    playsinline: 1,
-                    controls: 1,
-                    cc_load_policy: 0,
-                    iv_load_policy: 3,
-                    html5: 1
-                }
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-        function play(videoId){
-             player.loadVideoById(videoId, 0);
-        }
-        function onPlayerReady(event) {
-            event.target.playVideo();
-            console.log('loaded');
-        }
-        function onPlayerStateChange(event) {
-            // Handle state changes
-            console.log(event);
-        }
-    </script>
+
+  <h2>Plyr YouTube Video Player Example</h2>
+
+  <!-- YouTube Video Player Container -->
+  <div class="plyr__video-embed" id="player">
+    <iframe
+      src="https://www.youtube.com/embed/bSVIFJQbhNc"
+      allowfullscreen
+      allow="autoplay"
+      data-plyr-provider="youtube"
+      data-plyr-embed-id="bSVIFJQbhNc">
+    </iframe>
+  </div>
+
+  <!-- Plyr JS -->
+  <script src="https://cdn.plyr.io/3.6.12/plyr.polyfilled.js"></script>
+  <script>
+    // Initialize Plyr for the YouTube embed
+    const player = new Plyr('#player', {
+        controls: ['play', 'progress', 'volume', 'fullscreen', 'pip'],
+    });
+    player.on('ready', () => {
+      player.play();
+    });
+    
+  </script>
+  
 </body>
 </html>
