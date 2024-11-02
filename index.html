@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plyr YouTube Video Player Example</title>
 
-  <!-- Plyr CSS -->
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plyr YouTube Video Player Example</title>
+
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
 </head>
+
 <body>
 
-  <h2>Plyr YouTube Video Player Example</h2>
+    <h2>Plyr YouTube Video Player Example</h2>
 
-  <!-- YouTube Video Player Container -->
-  <div class="plyr__video-embed" id="player">
-    <iframe
-      src="https://www.youtube.com/embed/bSVIFJQbhNc"
-      allowfullscreen
-      allow="autoplay"
-      data-plyr-provider="youtube"
-      data-plyr-embed-id="bSVIFJQbhNc">
-    </iframe>
-  </div>
+    <!-- YouTube Video Player Container -->
+    <div class="plyr__video-embed" id="player">
+        <iframe src="https://www.youtube.com/embed/bSVIFJQbhNc" allowfullscreen allow="autoplay"
+            data-plyr-provider="youtube" data-plyr-embed-id="bSVIFJQbhNc">
+        </iframe>
+    </div>
 
-  <!-- Plyr JS -->
-  <script src="https://cdn.plyr.io/3.6.12/plyr.polyfilled.js"></script>
-  <script>
-    // Initialize Plyr for the YouTube embed
-    const player = new Plyr('#player', {
-       controls: ['play', 'progress', 'volume', 'fullscreen', 'pip'],
-    });
-    player.on('ready', () => {
-      setTimeout(() => {
-        player.play();
-      }, 2000); // 2000 milliseconds = 2 seconds
-    });
-    
-  </script>
-  
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.6.12/plyr.polyfilled.js"></script>
+    <script>
+        // Initialize Plyr for the YouTube embed
+        const player = new Plyr('#player', {
+            controls: ['play', 'progress', 'volume', 'fullscreen', 'pip'],
+        });
+        player.on('ready', () => {
+            setTimeout(() => {
+                const playButton = document.getElementsByClassName('plyr__controls__item plyr__control')[0];
+                if (playButton) {
+                    playButton.click(); // Clicks the button to play the video
+                }else{
+                    console.log('no button')
+                }
+            }, 2000); // 2000 milliseconds = 2 seconds
+        });
+
+    </script>
+
 </body>
+
 </html>
